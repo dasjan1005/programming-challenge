@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CsvWeatherDataLoaderTest {
 
     @Test
-    void givenCsvFile() {
+    void shouldLoadCsvCorrectly() {
         WeatherDataLoader weatherDataLoader = new CsvWeatherDataLoader(Path.of("./src/test/resources/weather.csv"));
 
         List<WeatherData> data = weatherDataLoader.load();
@@ -23,7 +23,7 @@ class CsvWeatherDataLoaderTest {
     }
 
     @Test
-    void givenNonExistingCsvFile() {
+    void shouldThrowWeatherDataLoaderExceptionWhenFileDoesNotExist() {
         var exception = assertThrows(WeatherDataLoaderException.class, () -> new CsvWeatherDataLoader(Path.of("./src/test/resources/weathers.csv")).load());
         assertEquals(NoSuchFileException.class, exception.getCause().getClass());
     }

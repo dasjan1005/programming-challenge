@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WeatherDataAnalyserTest {
 
     @Test
-    void givenExistingWeatherData() {
+    void shouldReturnExpectedDay() {
         List<WeatherData> weatherData = new ArrayList<>();
         weatherData.add(new WeatherData(1, 40, 20));
         weatherData.add(new WeatherData(2, 30, 20));
@@ -23,7 +23,7 @@ class WeatherDataAnalyserTest {
     }
 
     @Test
-    void givenMissingWeatherData() {
+    void shouldReturnEmptyWhenNoWeatherDataAvailable() {
         List<WeatherData> weatherData = new ArrayList<>();
 
         var weatherDataAnalyser = new WeatherDataAnalyser();
@@ -32,7 +32,7 @@ class WeatherDataAnalyserTest {
     }
 
     @Test
-    void givenExistingWeatherDataWithIdenticalSpread() {
+    void shouldReturnFirstFindingWhenMinimumSpreadIsIdentical() {
         List<WeatherData> weatherData = new ArrayList<>();
         weatherData.add(new WeatherData(1, 20, 20));
         weatherData.add(new WeatherData(2, 20, 20));
