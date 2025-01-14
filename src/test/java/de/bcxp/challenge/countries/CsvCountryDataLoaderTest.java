@@ -28,7 +28,7 @@ class CsvCountryDataLoaderTest {
 
     @Test
     void givenNonExistingCsvFile() {
-        var exception = assertThrows(WeatherDataLoaderException.class, () -> new CsvWeatherDataLoader(Path.of("./src/test/resources/country.csv")).load());
+        var exception = assertThrows(CountryDataLoaderException.class, () -> new CsvCountryDataLoader(Path.of("./src/test/resources/country.csv")).load());
         assertEquals(NoSuchFileException.class, exception.getCause().getClass());
     }
 
