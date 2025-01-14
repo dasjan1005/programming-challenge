@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CountryDataAnalyserTest {
 
     @Test
-    void givenExistingCountryData() {
+    void shouldReturnExpectedCountry() {
         List<CountryData> countryData = new ArrayList<>();
         countryData.add(new CountryData("Austria", 8926000, 83855));
         countryData.add(new CountryData("Belgium", 11566041, 30528));
@@ -23,7 +23,7 @@ class CountryDataAnalyserTest {
     }
 
     @Test
-    void givenMissingWeatherData() {
+    void shouldReturnEmptyWhenNoCountryDataAvailable() {
         List<CountryData> countryData = new ArrayList<>();
 
         var countryDataAnalyser = new CountryDataAnalyser();

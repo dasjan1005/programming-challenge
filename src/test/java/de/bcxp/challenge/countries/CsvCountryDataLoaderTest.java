@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CsvCountryDataLoaderTest {
 
     @Test
-    void givenCsvFile() {
+    void shouldLoadCsvCorrectly() {
         CountryDataLoader countryDataLoader = new CsvCountryDataLoader(Path.of("./src/test/resources/countries.csv"));
 
         List<CountryData> data = countryDataLoader.load();
@@ -24,13 +24,13 @@ class CsvCountryDataLoaderTest {
     }
 
     @Test
-    void givenNonExistingCsvFile() {
+    void shouldThrowCountryDataLoaderExceptionWhenFileDoesNotExist() {
         var exception = assertThrows(CountryDataLoaderException.class, () -> new CsvCountryDataLoader(Path.of("./src/test/resources/country.csv")).load());
         assertEquals(NoSuchFileException.class, exception.getCause().getClass());
     }
 
     @Test
-    void givenDifferentDataFormat() {
+    void shouldLoadCsvCorrectlyEvenWithDifferentDataFormat() {
 
         CountryDataLoader countryDataLoader = new CsvCountryDataLoader(Path.of("./src/test/resources/countries.csv"));
 
@@ -43,7 +43,7 @@ class CsvCountryDataLoaderTest {
     }
 
     @Test
-    void givenEmptyPopulation() {
+    void shouldThrowParseExceptionWhenDataFormatIsInvalid() {
         var exception = assertThrows(CountryDataLoaderException.class, () -> new CsvCountryDataLoader(Path.of("./src/test/resources/countries_invalid.csv")).load());
         assertEquals(ParseException.class, exception.getCause().getClass());
     }
