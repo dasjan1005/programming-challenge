@@ -32,7 +32,7 @@ class CountryDataAnalyserTest {
     }
 
     @Test
-    void shouldCalculateCorrectPopulation() {
+    void shouldCalculateCorrectPopulationDensity() {
         CountryData austriaData = new CountryData("Austria", 10, 5);
 
         assertEquals(2, austriaData.getPeoplePerSquareKilometer());
