@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CsvCountryDataLoaderTest {
 
-
     @Test
     void givenCsvFile() {
         CountryDataLoader countryDataLoader = new CsvCountryDataLoader(Path.of("./src/test/resources/countries.csv"));

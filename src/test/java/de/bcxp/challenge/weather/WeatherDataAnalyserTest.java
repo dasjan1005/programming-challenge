@@ -9,6 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WeatherDataAnalyserTest {
+
     @Test
     void givenExistingWeatherData() {
         List<WeatherData> weatherData = new ArrayList<>();
