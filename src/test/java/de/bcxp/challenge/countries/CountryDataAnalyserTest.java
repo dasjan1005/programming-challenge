@@ -1,7 +1,5 @@
 package de.bcxp.challenge.countries;
 
-import de.bcxp.challenge.weather.WeatherData;
-import de.bcxp.challenge.weather.WeatherDataAnalyser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

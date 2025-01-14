@@ -1,9 +1,5 @@
 package de.bcxp.challenge.countries;
 
-import de.bcxp.challenge.weather.CsvWeatherDataLoader;
-import de.bcxp.challenge.weather.WeatherData;
-import de.bcxp.challenge.weather.WeatherDataLoader;
-import de.bcxp.challenge.weather.WeatherDataLoaderException;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.NoSuchFileException;
