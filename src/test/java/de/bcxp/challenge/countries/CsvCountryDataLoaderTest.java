@@ -32,14 +32,14 @@ class CsvCountryDataLoaderTest {
     @Test
     void shouldLoadCsvCorrectlyEvenWithDifferentDataFormat() {
 
-        CountryDataLoader countryDataLoader = new CsvCountryDataLoader(Path.of("./src/test/resources/countries.csv"));
+        CountryDataLoader countryDataLoader = new CsvCountryDataLoader(Path.of("./src/test/resources/countries_different_format.csv"));
 
         List<CountryData> data = countryDataLoader.load();
 
-        assertEquals(27, data.size());
-        assertEquals("Croatia", data.get(3).getName());
-        assertEquals(4036355, data.get(3).getPopulation());
-        assertEquals(56594, data.get(3).getArea());
+        assertEquals(4, data.size());
+        assertEquals("Austria", data.get(0).getName());
+        assertEquals(8926000, data.get(0).getPopulation());
+        assertEquals(83855, data.get(0).getArea());
     }
 
     @Test
