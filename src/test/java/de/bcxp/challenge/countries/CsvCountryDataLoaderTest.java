@@ -43,7 +43,7 @@ class CsvCountryDataLoaderTest {
     }
 
     @Test
-    void shouldThrowParseExceptionWhenDataFormatIsInvalid() {
+    void shouldThrowCountryDataLoaderWhenDataFormatIsInvalid() {
         var exception = assertThrows(CountryDataLoaderException.class, () -> new CsvCountryDataLoader(Path.of("./src/test/resources/countries_invalid.csv")).load());
         assertEquals(ParseException.class, exception.getCause().getClass());
     }
