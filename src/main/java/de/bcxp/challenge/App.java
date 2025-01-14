@@ -1,5 +1,9 @@
 package de.bcxp.challenge;
 
+import de.bcxp.challenge.countries.CountryData;
+import de.bcxp.challenge.countries.CountryDataAnalyser;
+import de.bcxp.challenge.countries.CountryDataLoader;
+import de.bcxp.challenge.countries.CsvCountryDataLoader;
 import de.bcxp.challenge.weather.CsvWeatherDataLoader;
 import de.bcxp.challenge.weather.WeatherData;
 import de.bcxp.challenge.weather.WeatherDataAnalyser;
@@ -16,11 +20,12 @@ public final class App {
 
     /**
      * This is the main entry method of your program.
+     *
      * @param args The CLI arguments passed
      */
     public static void main(String... args) {
         // Your preparation code …
-        if(!(args.length > 0)) {
+        if (args.length == 0) {
             System.err.print("No argument found! Cannot read data...");
             System.exit(1);
         }
@@ -40,7 +45,24 @@ public final class App {
             System.exit(1);
         }
 
-        String countryWithHighestPopulationDensity = "Some country"; // Your population density analysis function call …
-        System.out.printf("Country with highest population density: %s%n", countryWithHighestPopulationDensity);
+        if(args.length < 2) {
+            System.err.print("No second argument found! Cannot read country data...");
+            System.exit(1);
+        }
+
+        CountryDataLoader countryDataLoader = new CsvCountryDataLoader(Path.of(args[1]));
+        CountryDataAnalyser countryDataAnalyser = new CountryDataAnalyser();
+
+        try {
+            List<CountryData> countryData = countryDataLoader.load();
+
+            String countryWithHighestPopulationDensity = countryDataAnalyser.findMostPeoplePerSquareKilometers(countryData)
+                    .map(CountryData::getName).map(Object::toString)
+                    .orElseThrow(() -> new RuntimeException("Empty country data!"));    // Your population density analysis function call …
+            System.out.printf("Country with highest population density: %s%n", countryWithHighestPopulationDensity);
+        } catch (Exception ex) {
+            ex.printStackTrace(System.err);
+            System.exit(1);
+        }
     }
 }
