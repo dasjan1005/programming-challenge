@@ -41,4 +41,10 @@ class WeatherDataAnalyserTest {
 
         assertEquals(1, weatherDataAnalyser.findSmallestTemperatureSpread(weatherData).orElseGet(Assertions::fail).getDay());
     }
+
+    @Test
+    void shouldCalculateCorrectTemperatureSpread() {
+        WeatherData data = new WeatherData(1, 20, 10);
+        assertEquals(10, data.getTemperatureSpread());
+    }
 }
