@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.text.ParseException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,5 +40,11 @@ class CsvCountryDataLoaderTest {
         assertEquals("Croatia", data.get(3).getName());
         assertEquals(4036355, data.get(3).getPopulation());
         assertEquals(56594, data.get(3).getArea());
+    }
+
+    @Test
+    void givenEmptyPopulation() {
+        var exception = assertThrows(CountryDataLoaderException.class, () -> new CsvCountryDataLoader(Path.of("./src/test/resources/countries_invalid.csv")).load());
+        assertEquals(ParseException.class, exception.getCause().getClass());
     }
 }
