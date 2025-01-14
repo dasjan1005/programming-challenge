@@ -23,4 +23,8 @@ public class CountryData {
     public int getArea() {
         return area;
     }
+
+    public double getPeoplePerSquareKilometer() {
+        return population / (double) area;
+    }
 }
