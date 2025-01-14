@@ -31,7 +31,6 @@ class CountryDataAnalyserTest {
         assertFalse(countryDataAnalyser.findMostPeoplePerSquareKilometers(countryData).isPresent());
     }
 
-
     @Test
     void shouldCalculateCorrectPopulation() {
         CountryData austriaData = new CountryData("Austria", 10, 5);
