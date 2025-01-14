@@ -45,7 +45,7 @@ public final class App {
             System.exit(1);
         }
 
-        if(args.length < 2) {
+        if (args.length < 2) {
             System.err.print("No second argument found! Cannot read country data...");
             System.exit(1);
         }

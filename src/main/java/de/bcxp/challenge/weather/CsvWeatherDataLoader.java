@@ -2,6 +2,7 @@ package de.bcxp.challenge.weather;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,7 +24,8 @@ public class CsvWeatherDataLoader implements WeatherDataLoader {
     @Override
     public List<WeatherData> load() throws WeatherDataLoaderException {
         try {
-            try (Reader reader = Files.newBufferedReader(this.filename); CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build()) {
+            try (Reader reader = Files.newBufferedReader(this.filename);
+                 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build()) {
                 return csvReader.readAll().stream()
                         .map(line -> new WeatherData(
                                 Integer.parseInt(line[COLUMN_DAY]),
