@@ -40,19 +40,18 @@ public class CsvCountryDataLoader implements CountryDataLoader {
                                 Integer.parseInt(line[COLUMN_AREA])
                         )).collect(Collectors.toList());
             }
+        } catch (CountryDataLoaderException ex) {
+            throw ex;
         } catch (Exception ex) {
             throw new CountryDataLoaderException("Cannot load country data!", ex);
         }
     }
 
-    private int parsePopulation(String rawPopulation) {
-        int population;
-
+    private int parsePopulation(String rawPopulation) throws CountryDataLoaderException {
         try {
-            population = NumberFormat.getIntegerInstance(Locale.GERMAN).parse(rawPopulation).intValue();
-        } catch (ParseException e) {
-            population = Integer.parseInt(rawPopulation);
+            return NumberFormat.getIntegerInstance(Locale.GERMAN).parse(rawPopulation).intValue();
+        } catch (ParseException ex) {
+            throw new CountryDataLoaderException("Cannot parse population!", ex);
         }
-        return population;
     }
 }
