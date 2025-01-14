@@ -1,0 +1,35 @@
+package de.bcxp.challenge.countries;
+
+import de.bcxp.challenge.weather.WeatherData;
+import de.bcxp.challenge.weather.WeatherDataAnalyser;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CountryDataAnalyserTest {
+
+    @Test
+    void givenExistingCountryData() {
+        List<CountryData> countryData = new ArrayList<>();
+        countryData.add(new CountryData("Austria", 8926000, 83855));
+        countryData.add(new CountryData("Belgium", 11566041, 30528));
+        countryData.add(new CountryData("Bulgaria", 6916548, 110994));
+
+        var countryDataAnalyser = new CountryDataAnalyser();
+
+        assertEquals("Belgium", countryDataAnalyser.findMostPeoplePerSquareKilometers(countryData).orElseGet(Assertions::fail).getName());
+    }
+
+    @Test
+    void givenMissingWeatherData() {
+        List<CountryData> countryData = new ArrayList<>();
+
+        var countryDataAnalyser = new CountryDataAnalyser();
+
+        assertFalse(countryDataAnalyser.findMostPeoplePerSquareKilometers(countryData).isPresent());
+    }
+}
