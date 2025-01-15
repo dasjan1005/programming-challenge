@@ -47,4 +47,13 @@ class CsvCountryDataLoaderTest {
         var exception = assertThrows(CountryDataLoaderException.class, () -> new CsvCountryDataLoader(Path.of("./src/test/resources/countries_invalid.csv")).load());
         assertEquals(ParseException.class, exception.getCause().getClass());
     }
+
+    @Test
+    void shouldNotBreakWhenIsEmpty() {
+        CountryDataLoader countryDataLoader = new CsvCountryDataLoader(Path.of("./src/test/resources/countries_empty.csv"));
+
+        List<CountryData> data = countryDataLoader.load();
+
+        assertEquals(0, data.size());
+    }
 }
